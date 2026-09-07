@@ -101,15 +101,9 @@ function syncSectionHash(id: SectionId) {
 }
 
 export function SectionPagerProvider({ children }: { children: ReactNode }) {
-  const [activeIndex, setActiveIndex] = useState<number>(() => {
-    if (typeof window === "undefined") {
-      return 0;
-    }
-
-    const hash = window.location.hash.slice(1) as SectionId;
-    const index = hash ? getSectionIndex(hash) : 0;
-    return index >= 0 ? index : 0;
-  });
+  // Always starts at 0 on both server and client render to avoid a hydration mismatch;
+  // the URL hash is applied afterwards, once mounted (see effect below).
+  const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const activeIndexRef = useRef<number>(activeIndex);
   const isLockedRef = useRef(false);
@@ -123,6 +117,17 @@ export function SectionPagerProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     applySectionAccent(sections[activeIndex].color);
   }, [activeIndex]);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1) as SectionId;
+    const index = hash ? getSectionIndex(hash) : -1;
+    if (index >= 0) {
+      // Deliberately post-mount: hydration already committed with index 0,
+      // so this update is a normal client re-render, not a hydration diff.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setActiveIndex(index);
+    }
+  }, []);
 
   const lockNavigation = useCallback(() => {
     isLockedRef.current = true;
