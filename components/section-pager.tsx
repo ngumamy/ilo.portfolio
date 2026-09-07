@@ -13,6 +13,7 @@ import {
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 
 import Contact from "@/components/contact";
+import Career from "@/components/career";
 import Hero from "@/components/hero";
 import Resume from "@/components/resume";
 import Services from "@/components/services";
@@ -340,7 +341,9 @@ export function SectionViewport() {
             className={
               activeSection.id === "accueil"
                 ? "relative flex h-full min-h-0 w-full items-stretch"
-                : activeSection.id === "resume" || activeSection.id === "services"
+                : activeSection.id === "resume" ||
+                  activeSection.id === "parcours" ||
+                  activeSection.id === "services"
                   ? "container mx-auto flex h-full min-h-0 items-stretch"
                 : "container mx-auto flex h-full min-h-0 items-center"
             }
@@ -349,6 +352,8 @@ export function SectionViewport() {
               <Hero direction={direction} goToSection={goToSection} />
             ) : activeSection.id === "resume" ? (
               <Resume direction={direction} goToSection={goToSection} />
+            ) : activeSection.id === "parcours" ? (
+              <Career direction={direction} goToSection={goToSection} />
             ) : activeSection.id === "services" ? (
               <Services direction={direction} goToSection={goToSection} />
             ) : activeSection.id === "work" ? (

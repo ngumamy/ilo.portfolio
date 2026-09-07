@@ -19,6 +19,63 @@ export const profile = {
     focus: ["Full-Stack", "DevOps", "SaaS", "E-commerce", "Web"],
   },
   resumeHref: "#resume",
+  career: {
+    timeline: [
+      {
+        period: "Depuis juillet 2025",
+        title: "Responsable Informatique",
+        organization: "FUNTOA SMIE",
+        description:
+          "Conception et évolution du site web de l’entreprise, développement d’une plateforme SaaS et mise en place de son déploiement automatisé avec CI/CD sur un serveur VPS.",
+      },
+      {
+        period: "Septembre – décembre 2023",
+        title: "Stagiaire IT",
+        organization: "TAKALOU — Fort-Dauphin",
+        description:
+          "Missions orientées administration systèmes et DevOps, notamment la mise en place d’un Active Directory et l’orchestration d’une application web sous Docker.",
+      },
+      {
+        period: "Mai – juillet 2023",
+        title: "Gérant — Multiservice & cyber",
+        organization: "Fianarantsoa",
+        description:
+          "Gestion des services de saisie, photocopie et impression, installation électrique du local et installation/configuration du réseau informatique LAN et WAN.",
+      },
+      {
+        period: "2023 – 2025",
+        title: "Master en Informatique générale",
+        organization: "École Nationale d’Informatique — Fianarantsoa",
+        description:
+          "Approfondissement de l’ingénierie logicielle, des systèmes, du développement web et de la mise en production.",
+      },
+      {
+        period: "2020 – 2023",
+        title: "Licence en Informatique générale",
+        organization: "École Nationale d’Informatique — Fianarantsoa",
+        description:
+          "Formation supérieure en informatique générale et bases de l’ingénierie des systèmes logiciels.",
+      },
+    ],
+    skills: [
+      {
+        title: "Backend",
+        items: ["Python", "Node.js", "Java", "Django"],
+      },
+      {
+        title: "Frontend",
+        items: ["JavaScript", "React", "Next.js", "Vue.js", "Bootstrap", "Tailwind CSS"],
+      },
+      {
+        title: "Données & infrastructure",
+        items: ["MySQL", "PostgreSQL", "Docker", "Kubernetes", "AWS", "VPS", "Linux"],
+      },
+      {
+        title: "Collaboration & livraison",
+        items: ["Git", "GitHub Actions", "CI/CD"],
+      },
+    ],
+  },
   services: {
     eyebrow: "Services",
     title: "Ce que je construis",

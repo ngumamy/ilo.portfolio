@@ -1,6 +1,7 @@
 export const sections = [
   { id: "accueil", title: "Accueil", label: "Accueil", color: "#19b5c6" },
   { id: "resume", title: "À propos", label: "À propos", color: "#d97706" },
+  { id: "parcours", title: "Parcours", label: "Parcours", color: "#0f766e" },
   { id: "services", title: "Services", label: "Services", color: "#2f80ed" },
   { id: "work", title: "Projets", label: "Projets", color: "#9d4edd" },
   { id: "contact", title: "Contact", label: "Contact", color: "#e05263" },
