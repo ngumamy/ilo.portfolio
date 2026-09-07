@@ -9,7 +9,7 @@ import ThemeProvider from "@/components/theme-provider";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets:['latin'],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable:'--font-jetbrains-mono'});
 
 const geistSans = Geist({

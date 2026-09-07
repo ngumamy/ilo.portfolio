@@ -27,7 +27,6 @@ export default function Resume({
           src={portrait}
           alt={`Portrait de ${profile.name}`}
           placeholder="blur"
-          unoptimized
           sizes="(min-width: 1024px) 22rem, 18rem"
           className="resume-portrait-img relative h-auto w-full object-contain"
         />
