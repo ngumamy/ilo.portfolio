@@ -1,4 +1,5 @@
 import Pagination from "@/components/pagination";
+import CvDownload from "@/components/cv-download";
 import { SectionViewport } from "@/components/section-pager";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main className="relative flex min-h-0 flex-1 flex-col">
       <SectionViewport />
       <Pagination />
+      <CvDownload />
     </main>
   );
 }
