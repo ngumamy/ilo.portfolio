@@ -88,8 +88,8 @@ export const profile = {
     },
   ],
   contact: {
-    email: "contact@ilo-dev.com",
-    location: "France / Remote",
+    email: "lolitorazafimaharo@gmail.com",
+    location: "Tamatave, Madagascar",
     services: [
       "Sites web et portfolios",
       "Applications web sur mesure",
