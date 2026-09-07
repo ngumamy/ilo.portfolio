@@ -1,5 +1,6 @@
 "use client";
 
+import { BriefcaseIcon, CodeIcon, GraduationCapIcon } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 
 import { profile } from "@/lib/site";
@@ -31,45 +32,28 @@ export default function Career({
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(17rem,0.8fr)]">
-        <div>
-          <h3 className="font-sans text-xl font-bold text-slate-950 dark:text-white">
-            Expérience & formation
-          </h3>
-          <ol className="mt-5 space-y-5 border-l border-slate-200 pl-5 dark:border-slate-700">
-            {profile.career.timeline.map((item, index) => (
-              <motion.li
-                key={`${item.period}-${item.title}`}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.35,
-                  delay: 0.12 + index * 0.07,
-                  ease: [0.32, 0.72, 0, 1],
-                }}
-                className="relative"
-              >
-                <span className="absolute -left-[1.58rem] top-1.5 size-2.5 rounded-full border-2 border-white bg-[var(--section-accent)] dark:border-[#0d1b24]" />
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[var(--section-accent)]">
-                  {item.period}
-                </p>
-                <h4 className="mt-1 font-sans text-lg font-semibold text-slate-950 dark:text-white">
-                  {item.title}
-                </h4>
-                <p className="mt-1 font-sans text-sm font-medium text-slate-500 dark:text-slate-400">
-                  {item.organization}
-                </p>
-                <p className="mt-2 max-w-2xl font-sans text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                  {item.description}
-                </p>
-              </motion.li>
-            ))}
-          </ol>
+        <div className="space-y-5">
+          <CareerGroup
+            icon={BriefcaseIcon}
+            title="Expériences professionnelles"
+            items={profile.career.experiences}
+          />
+          <CareerGroup
+            icon={GraduationCapIcon}
+            title="Formation"
+            items={profile.career.education}
+          />
         </div>
 
-        <aside className="rounded-3xl border border-slate-200/80 bg-white/75 p-5 shadow-sm dark:border-slate-700/80 dark:bg-[#102530]/65">
-          <h3 className="font-sans text-xl font-bold text-slate-950 dark:text-white">
-            Compétences
-          </h3>
+        <aside className="h-fit rounded-3xl border border-slate-200/80 bg-white/75 p-5 shadow-sm backdrop-blur-sm dark:border-slate-700/80 dark:bg-[#102530]/65">
+          <div className="flex items-center gap-3">
+            <span className="flex size-10 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--section-accent)_12%,transparent)] text-[var(--section-accent)]">
+              <CodeIcon className="size-5" />
+            </span>
+            <h3 className="font-sans text-xl font-bold text-slate-950 dark:text-white">
+              Compétences
+            </h3>
+          </div>
           <div className="mt-5 space-y-5">
             {profile.career.skills.map((group) => (
               <div key={group.title}>
@@ -100,5 +84,60 @@ export default function Career({
         Travailler ensemble
       </button>
     </motion.div>
+  );
+}
+
+function CareerGroup({
+  icon: Icon,
+  title,
+  items,
+}: {
+  icon: typeof BriefcaseIcon;
+  title: string;
+  items: readonly {
+    period: string;
+    title: string;
+    organization: string;
+    description: string;
+  }[];
+}) {
+  return (
+    <section className="rounded-3xl border border-slate-200/80 bg-white/65 p-5 dark:border-slate-700/80 dark:bg-[#102530]/45">
+      <div className="flex items-center gap-3">
+        <span className="flex size-10 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--section-accent)_12%,transparent)] text-[var(--section-accent)]">
+          <Icon className="size-5" />
+        </span>
+        <h3 className="font-sans text-xl font-bold text-slate-950 dark:text-white">{title}</h3>
+      </div>
+      <ol className="mt-5 space-y-3 border-l border-slate-200 pl-5 dark:border-slate-700">
+        {items.map((item, index) => (
+          <motion.li
+            key={`${item.period}-${item.title}`}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.35,
+              delay: 0.12 + index * 0.07,
+              ease: [0.32, 0.72, 0, 1],
+            }}
+            className="relative rounded-2xl bg-slate-50/75 p-4 dark:bg-slate-900/25"
+          >
+            <span className="absolute -left-[1.58rem] top-5 size-2.5 rounded-full border-2 border-white bg-[var(--section-accent)] dark:border-[#102530]" />
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[var(--section-accent)]">
+              {item.period}
+            </p>
+            <h4 className="mt-1 font-sans text-lg font-semibold text-slate-950 dark:text-white">
+              {item.title}
+            </h4>
+            <p className="mt-1 font-sans text-sm font-medium text-slate-500 dark:text-slate-400">
+              {item.organization}
+            </p>
+            <p className="mt-2 max-w-2xl font-sans text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              {item.description}
+            </p>
+          </motion.li>
+        ))}
+      </ol>
+    </section>
   );
 }
