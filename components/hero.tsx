@@ -103,7 +103,7 @@ export default function Hero({
             </button>
             <button
               type="button"
-              onClick={() => goToSection("resume")}
+              onClick={() => goToSection("parcours")}
               className="inline-flex h-12 items-center px-2 text-sm font-semibold text-slate-600 underline-offset-4 transition-colors hover:text-[var(--section-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50 dark:text-slate-300"
             >
               Mon parcours

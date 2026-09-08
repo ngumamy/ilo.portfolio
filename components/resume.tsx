@@ -65,13 +65,22 @@ export default function Resume({
           ))}
         </ul>
 
-        <button
-          type="button"
-          onClick={() => goToSection("services")}
-          className="mt-8 inline-flex h-12 items-center px-1 font-sans text-sm font-semibold text-slate-600 underline-offset-4 transition-colors hover:text-[var(--section-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50 dark:text-slate-300"
-        >
-          Mes services
-        </button>
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={() => goToSection("parcours")}
+            className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-[#19b5c6] to-[#3b5bdb] px-6 font-sans text-sm font-semibold text-white shadow-[0_12px_28px_rgba(25,181,198,0.28)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50"
+          >
+            Voir mon parcours
+          </button>
+          <button
+            type="button"
+            onClick={() => goToSection("services")}
+            className="inline-flex h-12 items-center px-1 font-sans text-sm font-semibold text-slate-600 underline-offset-4 transition-colors hover:text-[var(--section-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50 dark:text-slate-300"
+          >
+            Mes services
+          </button>
+        </div>
       </div>
     </motion.div>
   );

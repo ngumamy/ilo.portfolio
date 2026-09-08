@@ -20,7 +20,7 @@ export const profile = {
   },
   resumeHref: "#resume",
   career: {
-    timeline: [
+    experiences: [
       {
         period: "Depuis juillet 2025",
         title: "Responsable Informatique",
@@ -42,6 +42,8 @@ export const profile = {
         description:
           "Gestion des services de saisie, photocopie et impression, installation électrique du local et installation/configuration du réseau informatique LAN et WAN.",
       },
+    ],
+    education: [
       {
         period: "2023 – 2025",
         title: "Master en Informatique générale",

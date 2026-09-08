@@ -353,7 +353,7 @@ export function SectionViewport() {
             ) : activeSection.id === "resume" ? (
               <Resume direction={direction} goToSection={goToSection} />
             ) : activeSection.id === "parcours" ? (
-              <Career direction={direction} goToSection={goToSection} />
+              <Career direction={direction} />
             ) : activeSection.id === "services" ? (
               <Services direction={direction} goToSection={goToSection} />
             ) : activeSection.id === "work" ? (

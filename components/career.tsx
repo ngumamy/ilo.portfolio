@@ -4,14 +4,11 @@ import { BriefcaseIcon, CodeIcon, GraduationCapIcon } from "@phosphor-icons/reac
 import { motion } from "framer-motion";
 
 import { profile } from "@/lib/site";
-import type { SectionId } from "@/lib/sections";
 
 export default function Career({
   direction,
-  goToSection,
 }: {
   direction: number;
-  goToSection: (id: SectionId) => void;
 }) {
   return (
     <motion.div
@@ -76,13 +73,6 @@ export default function Career({
         </aside>
       </div>
 
-      <button
-        type="button"
-        onClick={() => goToSection("contact")}
-        className="mt-8 mb-4 inline-flex h-12 w-fit items-center justify-center rounded-full bg-gradient-to-r from-[#19b5c6] to-[#3b5bdb] px-6 font-sans text-sm font-semibold text-white shadow-[0_12px_28px_rgba(25,181,198,0.28)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50"
-      >
-        Travailler ensemble
-      </button>
     </motion.div>
   );
 }
