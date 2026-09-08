@@ -65,7 +65,7 @@ const Nav = () => {
           render={
             <Button
               variant="outline"
-              size="icon"
+              size="icon-lg"
               className="border-slate-300 bg-white text-[var(--section-accent)] shadow-sm transition-colors duration-500 hover:border-[var(--section-accent)] hover:bg-slate-50"
             />
           }
@@ -76,14 +76,14 @@ const Nav = () => {
         </SheetTrigger>
         <SheetContent
           side="right"
-          className="w-72 border-slate-200 bg-[#f7fbfc] p-6 dark:border-slate-800 dark:bg-[#0d1b24]"
+          className="w-[min(20rem,calc(100vw-1rem))] max-w-[calc(100vw-1rem)] border-slate-200 bg-[#f7fbfc] p-5 dark:border-slate-800 dark:bg-[#0d1b24] sm:p-6"
         >
           <SheetHeader className="px-0">
             <SheetTitle className="text-base text-slate-950 dark:text-white">
               Navigation
             </SheetTitle>
           </SheetHeader>
-          <div className="mt-8 flex flex-col gap-2">
+          <div className="mt-6 flex flex-col gap-1.5 sm:mt-8">
             {sections.map((item) => (
               <SheetClose
                 key={item.id}
@@ -93,7 +93,7 @@ const Nav = () => {
                     onClick={() => handleSectionClick(item.id)}
                     aria-current={activeSection.id === item.id ? "page" : undefined}
                     className={cn(
-                      "w-full border-l-2 px-3 py-2 text-left text-sm font-medium transition-colors",
+                      "min-h-11 w-full border-l-2 px-3 py-2 text-left text-sm font-medium transition-colors",
                       activeSection.id === item.id
                         ? "border-[var(--section-accent)] bg-slate-100 text-[var(--section-accent)] dark:bg-[#15333f]"
                         : "border-transparent text-slate-700 hover:border-[var(--section-accent)] hover:bg-slate-100 hover:text-[var(--section-accent)] focus-visible:border-[var(--section-accent)] focus-visible:bg-slate-100 focus-visible:outline-none dark:text-slate-200 dark:hover:bg-[#15333f] dark:hover:text-[var(--section-accent)] dark:focus-visible:bg-[#15333f]"

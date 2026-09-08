@@ -19,13 +19,13 @@ export default function Pagination() {
   return (
     <motion.nav
       aria-label="Pagination des sections"
-      className="pointer-events-none absolute inset-y-0 right-3 z-30 flex items-center sm:right-5 xl:right-8"
+      className="pointer-events-none absolute inset-x-0 bottom-3 z-30 flex justify-center px-3 xl:inset-y-0 xl:right-8 xl:bottom-auto xl:left-auto xl:justify-end xl:px-0"
       initial={{ opacity: 0, x: 16 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4, delay: 0.15 }}
     >
       <div
-        className="pointer-events-auto flex flex-col items-center gap-2 rounded-full border border-slate-200/80 bg-[#f7fbfc]/90 px-2 py-3 shadow-lg shadow-slate-900/5 backdrop-blur-md dark:border-slate-800/80 dark:bg-[#0d1b24]/90 dark:shadow-black/20"
+        className="pointer-events-auto flex flex-row items-center gap-1.5 rounded-full border border-slate-200/80 bg-[#f7fbfc]/95 px-2 py-2 shadow-lg shadow-slate-900/10 backdrop-blur-md dark:border-slate-800/80 dark:bg-[#0d1b24]/95 dark:shadow-black/20 xl:flex-col xl:gap-2 xl:px-2 xl:py-3"
       >
         <button
           type="button"
@@ -34,10 +34,10 @@ export default function Pagination() {
           aria-label={t.common.previous}
           className={controlButtonClassName}
         >
-          <CaretUpIcon weight="bold" />
+          <CaretUpIcon className="-rotate-90 xl:rotate-0" weight="bold" />
         </button>
 
-        <div className="flex flex-col items-center gap-1.5 py-1">
+        <div className="flex flex-row items-center gap-1 py-1 xl:flex-col xl:gap-1.5">
           {sections.map((section, index) => {
             const isActive = index === activeIndex;
 
@@ -55,7 +55,7 @@ export default function Pagination() {
                   transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
                   className={cn(
                     "block rounded-full bg-slate-300/80 dark:bg-slate-600",
-                    isActive ? "h-7 w-2.5" : "size-2.5 group-hover:bg-[var(--section-accent)]/70"
+                    isActive ? "h-2.5 w-7 xl:h-7 xl:w-2.5" : "size-2.5 group-hover:bg-[var(--section-accent)]/70"
                   )}
                   style={
                     isActive
@@ -81,7 +81,7 @@ export default function Pagination() {
               y: direction >= 0 ? -6 : 6,
             }}
             transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-            className="min-w-8 text-center text-[10px] font-semibold leading-none tabular-nums text-slate-600 dark:text-slate-300"
+            className="hidden min-w-8 text-center text-[10px] font-semibold leading-none tabular-nums text-slate-600 dark:text-slate-300 sm:inline xl:block"
           >
             {activeIndex + 1}/{total}
           </motion.span>
@@ -94,7 +94,7 @@ export default function Pagination() {
           aria-label={t.common.next}
           className={controlButtonClassName}
         >
-          <CaretDownIcon weight="bold" />
+          <CaretDownIcon className="rotate-90 xl:rotate-0" weight="bold" />
         </button>
       </div>
     </motion.nav>

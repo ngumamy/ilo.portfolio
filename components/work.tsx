@@ -17,7 +17,7 @@ export default function Work({
   const { t } = useI18n();
   return (
     <motion.div
-      className="flex h-full min-h-0 w-full flex-col justify-center overflow-y-auto py-6 pr-12 sm:pr-16 lg:py-8 xl:pr-20"
+      className="flex h-full min-h-0 w-full flex-col justify-center overflow-y-auto py-6 pr-12 pb-24 sm:pr-16 sm:pb-24 lg:py-8 lg:pb-8 xl:pr-20"
       initial={{ opacity: 0, y: direction >= 0 ? 24 : -24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
