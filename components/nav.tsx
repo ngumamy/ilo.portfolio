@@ -5,6 +5,7 @@ import { LanguageSelect, ThemeToggle } from "@/components/preferences";
 import { sections } from "@/lib/sections";
 import { cn } from "@/lib/utils";
 import { ListIcon } from "@phosphor-icons/react";
+import { useI18n } from "@/lib/i18n";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +25,7 @@ const hireMeClassName =
 
 const Nav = () => {
   const { activeSection, goToSection } = useSectionPager();
+  const { t } = useI18n();
 
   const handleSectionClick = (id: typeof sections[number]["id"]) => {
     goToSection(id);
@@ -44,7 +46,7 @@ const Nav = () => {
                 "text-[var(--section-accent)] after:scale-x-100 dark:text-[var(--section-accent)]"
             )}
           >
-            {item.label}
+            {t.sections[item.id]}
           </button>
         ))}
         <LanguageSelect />
@@ -99,7 +101,7 @@ const Nav = () => {
                   />
                 }
               >
-                {item.label}
+                {t.sections[item.id]}
               </SheetClose>
             ))}
             <div className="mt-4 flex items-center gap-2 px-3">

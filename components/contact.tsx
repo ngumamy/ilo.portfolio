@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { profile } from "@/lib/site";
 import type { SectionId } from "@/lib/sections";
+import { useI18n } from "@/lib/i18n";
 
 export default function Contact({
   direction,
@@ -13,6 +14,7 @@ export default function Contact({
   direction: number;
   goToSection: (id: SectionId) => void;
 }) {
+  const { t } = useI18n();
   return (
     <motion.div
       className="flex h-full min-h-0 w-full flex-col justify-center overflow-y-auto py-6 pr-12 sm:pr-16 lg:py-8 xl:pr-20"
@@ -23,14 +25,13 @@ export default function Contact({
       <div className="grid w-full items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
           <p className="font-sans text-sm font-semibold tracking-[0.18em] text-[var(--section-accent)] uppercase">
-            Contact
+            {t.contact.eyebrow}
           </p>
           <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl xl:text-5xl dark:text-white">
-            Discutons votre prochain projet.
+            {t.contact.title}
           </h2>
           <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-200">
-            Vous avez une idée, un besoin ou un produit à faire évoluer ? Je vous aide à
-            transformer la vision en solution fiable, performante et prête à l’usage.
+            {t.contact.lead}
           </p>
 
           <div className="mt-8 space-y-4">
@@ -43,7 +44,7 @@ export default function Contact({
               </span>
               <span>
                 <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-                  Email
+                  {t.contact.email}
                 </span>
                 <span className="font-sans text-base font-medium">{profile.contact.email}</span>
               </span>
@@ -55,7 +56,7 @@ export default function Contact({
               </span>
               <span>
                 <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-                  Localisation
+                  {t.contact.location}
                 </span>
                 <span className="font-sans text-base font-medium">{profile.contact.location}</span>
               </span>
@@ -70,16 +71,16 @@ export default function Contact({
             </span>
             <div>
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-                Besoin d’un dev ?
+                {t.contact.need}
               </p>
               <p className="font-sans text-lg font-semibold text-slate-950 dark:text-white">
-                Je peux vous aider.
+                {t.contact.help}
               </p>
             </div>
           </div>
 
           <ul className="mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-200">
-            {profile.contact.services.map((service) => (
+            {t.contact.services.map((service) => (
               <li key={service} className="flex items-start gap-2">
                 <span className="mt-1.5 size-1.5 rounded-full bg-[var(--section-accent)]" />
                 <span>{service}</span>
@@ -88,10 +89,10 @@ export default function Contact({
           </ul>
 
           <a
-            href={`mailto:${profile.contact.email}?subject=${encodeURIComponent("Demande de devis / projet")}`}
+            href={`mailto:${profile.contact.email}?subject=${encodeURIComponent(t.contact.subject)}`}
             className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-[#19b5c6] to-[#3b5bdb] px-6 font-sans text-sm font-semibold text-white shadow-[0_12px_28px_rgba(25,181,198,0.28)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50"
           >
-            Écrire un message
+            {t.contact.write}
           </a>
 
           <button
@@ -99,7 +100,7 @@ export default function Contact({
             onClick={() => goToSection("accueil")}
             className="mt-4 inline-flex h-12 items-center px-1 font-sans text-sm font-semibold text-slate-600 underline-offset-4 transition-colors hover:text-[var(--section-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50 dark:text-slate-300"
           >
-            Revenir à l’accueil
+            {t.contact.home}
           </button>
         </div>
       </div>

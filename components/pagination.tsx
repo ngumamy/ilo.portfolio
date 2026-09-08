@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useSectionPager } from "@/components/section-pager";
 import { sections } from "@/lib/sections";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 
 const controlButtonClassName =
   "inline-flex size-9 items-center justify-center rounded-full border border-slate-300/80 bg-white/90 text-slate-700 shadow-sm backdrop-blur-sm transition-colors hover:border-[var(--section-accent)] hover:text-[var(--section-accent)] disabled:pointer-events-none disabled:opacity-35 dark:border-slate-700 dark:bg-[#102530]/90 dark:text-slate-200 dark:hover:border-[var(--section-accent)] dark:hover:text-[var(--section-accent)]";
@@ -13,6 +14,7 @@ const controlButtonClassName =
 export default function Pagination() {
   const { activeIndex, activeSection, direction, total, goToIndex, goNext, goPrev } =
     useSectionPager();
+  const { t } = useI18n();
 
   return (
     <motion.nav
@@ -29,7 +31,7 @@ export default function Pagination() {
           type="button"
           onClick={goPrev}
           disabled={activeIndex === 0}
-          aria-label="Section précédente"
+          aria-label={t.common.previous}
           className={controlButtonClassName}
         >
           <CaretUpIcon weight="bold" />
@@ -44,7 +46,7 @@ export default function Pagination() {
                 key={section.id}
                 type="button"
                 onClick={() => goToIndex(index)}
-                aria-label={`Aller à ${section.label}`}
+                aria-label={`${t.sections[section.id]}`}
                 aria-current={isActive ? "step" : undefined}
                 className="group relative flex w-8 items-center justify-center py-0.5"
               >
@@ -89,7 +91,7 @@ export default function Pagination() {
           type="button"
           onClick={goNext}
           disabled={activeIndex === total - 1}
-          aria-label="Section suivante"
+          aria-label={t.common.next}
           className={controlButtonClassName}
         >
           <CaretDownIcon weight="bold" />

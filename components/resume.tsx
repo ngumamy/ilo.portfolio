@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import portrait from "@/public/portrait.png";
 import { profile } from "@/lib/site";
 import type { SectionId } from "@/lib/sections";
+import { useI18n } from "@/lib/i18n";
 
 export default function Resume({
   direction,
@@ -14,6 +15,7 @@ export default function Resume({
   direction: number;
   goToSection: (id: SectionId) => void;
 }) {
+  const { t } = useI18n();
   return (
     <motion.div
       className="grid h-full min-h-0 w-full grid-cols-1 items-center gap-8 overflow-y-auto py-6 pr-12 sm:gap-10 sm:pr-16 lg:grid-cols-[minmax(15rem,22rem)_minmax(0,1fr)] lg:gap-14 lg:overflow-hidden lg:py-8 xl:gap-16 xl:pr-20"
@@ -34,7 +36,7 @@ export default function Resume({
 
       <div className="min-w-0 pb-4 lg:pb-0">
         <p className="font-sans text-sm font-semibold tracking-[0.18em] text-[var(--section-accent)] uppercase">
-          {profile.about.eyebrow}
+          {t.about.eyebrow}
         </p>
         <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl xl:text-5xl dark:text-white">
           {profile.name}
@@ -43,9 +45,9 @@ export default function Resume({
           {profile.roles}
         </p>
         <p className="mt-6 font-sans text-lg font-semibold text-slate-900 dark:text-white">
-          {profile.about.lead}
+          {t.about.lead}
         </p>
-        {profile.about.body.map((paragraph) => (
+        {t.about.body.map((paragraph) => (
           <p
             key={paragraph}
             className="mt-4 max-w-xl font-sans text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-200"
@@ -71,14 +73,14 @@ export default function Resume({
             onClick={() => goToSection("parcours")}
             className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-[#19b5c6] to-[#3b5bdb] px-6 font-sans text-sm font-semibold text-white shadow-[0_12px_28px_rgba(25,181,198,0.28)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50"
           >
-            Voir mon parcours
+            {t.about.parcours}
           </button>
           <button
             type="button"
             onClick={() => goToSection("services")}
             className="inline-flex h-12 items-center px-1 font-sans text-sm font-semibold text-slate-600 underline-offset-4 transition-colors hover:text-[var(--section-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50 dark:text-slate-300"
           >
-            Mes services
+            {t.about.services}
           </button>
         </div>
       </div>

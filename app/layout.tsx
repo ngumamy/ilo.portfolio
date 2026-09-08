@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/header";
 import { SectionPagerProvider } from "@/components/section-pager";
 import ThemeProvider from "@/components/theme-provider";
+import { I18nProvider } from "@/lib/i18n";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets:['latin'],
@@ -56,10 +57,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className={cn(jetbrainsMono.variable, "flex h-svh flex-col overflow-hidden overscroll-none")}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <SectionPagerProvider>
-            <Header />
-            {children}
-          </SectionPagerProvider>
+          <I18nProvider>
+            <SectionPagerProvider>
+              <Header />
+              {children}
+            </SectionPagerProvider>
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

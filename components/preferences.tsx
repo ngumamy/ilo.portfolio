@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
+import { useI18n, type Language } from "@/lib/i18n";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,19 +14,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-type Language = "en" | "fr";
-
 const languageLabels: Record<Language, string> = {
   en: "EN",
   fr: "FR",
 };
 
 export const LanguageSelect = () => {
-  const [language, setLanguage] = useState<Language>("fr");
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
+  const { language, setLanguage, t } = useI18n();
 
   const handleLanguageChange = (value: string | null) => {
     if (value !== "en" && value !== "fr") {
@@ -33,14 +28,12 @@ export const LanguageSelect = () => {
     }
 
     setLanguage(value);
-    window.localStorage.setItem("portfolio-language", value);
-    document.documentElement.lang = value;
   };
 
   return (
     <Select value={language} onValueChange={handleLanguageChange}>
       <SelectTrigger
-        aria-label="Choisir la langue"
+        aria-label={t.common.language}
         className="h-9 rounded-md border-slate-300 bg-white px-2.5 font-semibold text-[#0f3d57] shadow-sm hover:border-[#19b5c6] dark:border-slate-700 dark:bg-[#102530] dark:text-slate-100"
       >
         <SelectValue>{languageLabels[language]}</SelectValue>
@@ -58,6 +51,7 @@ export const LanguageSelect = () => {
 };
 
 export const ThemeToggle = () => {
+  const { t } = useI18n();
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(
     () => () => undefined,
@@ -72,7 +66,7 @@ export const ThemeToggle = () => {
       type="button"
       variant="outline"
       size="icon"
-      aria-label={isDark ? "Utiliser le thème clair" : "Utiliser le thème sombre"}
+      aria-label={isDark ? t.common.lightTheme : t.common.darkTheme}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="size-9 rounded-md border-slate-300 bg-white text-[#0f3d57] shadow-sm hover:border-[#19b5c6] hover:bg-[#e9f8fa] hover:text-[#0f3d57] dark:border-slate-700 dark:bg-[#102530] dark:text-[#7ddce5] dark:hover:border-[#19b5c6] dark:hover:bg-[#15333f]"
     >

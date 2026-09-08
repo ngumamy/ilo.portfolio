@@ -13,6 +13,7 @@ import HeroBackdrop from "@/components/hero-backdrop";
 
 import { profile, type SocialId } from "@/lib/site";
 import type { SectionId } from "@/lib/sections";
+import { useI18n } from "@/lib/i18n";
 
 const socialIcons: Record<SocialId, ComponentType<{ className?: string }>> = {
   linkedin: LinkedinLogoIcon,
@@ -49,6 +50,7 @@ export default function Hero({
   direction: number;
   goToSection: (id: SectionId) => void;
 }) {
+  const { t } = useI18n();
 
   return (
     <motion.div
@@ -62,28 +64,24 @@ export default function Hero({
       <div className="relative z-10 flex items-center px-4 py-8 sm:px-6 lg:px-10 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] xl:pr-6">
         <div className="max-w-xl xl:max-w-2xl">
           <p className="font-sans text-base font-medium text-slate-600 sm:text-lg dark:text-slate-300">
-            {profile.greeting}{" "}
+            {t.hero.greeting}{" "}
             <span className="font-semibold text-[var(--section-accent)]">{profile.name}</span>.
           </p>
 
           <h1 className="mt-3">
-            <Typewriter text={profile.roles} />
+            <Typewriter text={t.hero.roles} />
           </h1>
 
           <p className="mt-5 max-w-xl font-sans text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-200">
-            {profile.bioLead}{" "}
+            {t.hero.bio}{" "}
             <strong className="font-semibold text-slate-900 dark:text-white">
-              {profile.bioOffer}
-            </strong>
-            {profile.bioMid}{" "}
-            <strong className="font-semibold text-slate-900 dark:text-white">
-              {profile.bioValues}
+              {t.hero.values}
             </strong>
             .
           </p>
 
           <p className="mt-5 font-sans text-base font-bold tracking-wide text-[var(--section-accent)] sm:text-lg">
-            {profile.tagline}
+            {t.hero.tagline}
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -92,21 +90,21 @@ export default function Hero({
               onClick={() => goToSection("work")}
               className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-[#19b5c6] to-[#3b5bdb] px-6 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(25,181,198,0.28)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50"
             >
-              Voir mes projets
+              {t.hero.projects}
             </button>
             <button
               type="button"
               onClick={() => goToSection("contact")}
               className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50 dark:bg-white dark:text-slate-950 dark:ring-0"
             >
-              Me contacter
+              {t.hero.contact}
             </button>
             <button
               type="button"
               onClick={() => goToSection("parcours")}
               className="inline-flex h-12 items-center px-2 text-sm font-semibold text-slate-600 underline-offset-4 transition-colors hover:text-[var(--section-accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--section-accent)]/50 dark:text-slate-300"
             >
-              Mon parcours
+              {t.hero.career}
             </button>
           </div>
 
