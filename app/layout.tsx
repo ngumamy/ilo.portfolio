@@ -25,6 +25,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ilo-dev.com"),
+  icons: {
+    icon: "/ilor-light.png",
+    shortcut: "/ilor-light.png",
+    apple: "/ilor-light.png",
+  },
   title: "Lolito Razafimaharo — Full-Stack Developer & DevOps",
   description:
     "Ingénieur en informatique et développeur full-stack. Je conçois, développe et déploie des applications web, plateformes SaaS, sites vitrines et solutions e-commerce orientées résultats.",
