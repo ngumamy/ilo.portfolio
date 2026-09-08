@@ -1,19 +1,11 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { MoonIcon, SunIcon } from "@phosphor-icons/react";
+import { FlagIcon, MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
 import { useI18n, type Language } from "@/lib/i18n";
 
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
 const languageLabels: Record<Language, string> = {
   en: "EN",
   fr: "FR",
@@ -31,22 +23,37 @@ export const LanguageSelect = () => {
   };
 
   return (
-    <Select value={language} onValueChange={handleLanguageChange}>
-      <SelectTrigger
-        aria-label={t.common.language}
-        className="h-9 rounded-md border-slate-300 bg-white px-2.5 font-semibold text-[#0f3d57] shadow-sm hover:border-[#19b5c6] dark:border-slate-700 dark:bg-[#102530] dark:text-slate-100"
-      >
-        <SelectValue>{languageLabels[language]}</SelectValue>
-      </SelectTrigger>
-      <SelectContent className="rounded-md border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-[#102530]">
-        <SelectItem value="en" className="rounded-sm px-2 py-1.5 font-medium">
-          EN
-        </SelectItem>
-        <SelectItem value="fr" className="rounded-sm px-2 py-1.5 font-medium">
-          FR
-        </SelectItem>
-      </SelectContent>
-    </Select>
+    <fieldset
+      aria-label={t.common.language}
+      className="flex h-9 items-center gap-0.5 rounded-md border border-slate-300 bg-white p-0.5 shadow-sm dark:border-slate-700 dark:bg-[#102530]"
+    >
+      <legend className="sr-only">{t.common.language}</legend>
+      {(["fr", "en"] as const).map((value) => {
+        const isActive = language === value;
+
+        return (
+          <label
+            key={value}
+            className={`relative inline-flex h-7 cursor-pointer items-center gap-1 rounded-sm px-2 text-xs font-bold transition-colors ${
+              isActive
+                ? "bg-[var(--section-accent)] text-white shadow-sm"
+                : "text-slate-500 hover:text-[var(--section-accent)] dark:text-slate-300"
+            }`}
+          >
+            <input
+              type="radio"
+              name="portfolio-language"
+              value={value}
+              checked={isActive}
+              onChange={() => handleLanguageChange(value)}
+              className="sr-only"
+            />
+            <FlagIcon className="size-3.5" weight={isActive ? "fill" : "regular"} />
+            <span>{languageLabels[value]}</span>
+          </label>
+        );
+      })}
+    </fieldset>
   );
 };
 
